@@ -1,3 +1,9 @@
+/*
+LUHNY by Alexander Abraham, 
+a.k.a. "Angel Dollface".
+Licensed under the DSL v1.
+*/
+
 import { fetchJSON } from './network.ts';
 
 export async function instanceTimeline(
@@ -7,23 +13,28 @@ export async function instanceTimeline(
     withRenotes: boolean,
     withReplies: boolean,
     noteCount: number
-): Promise<Object> {
-    let reqUrl: string = baseUrl + apiBase + "/notes/local-timeline";
-    let payload: Object = {
+): Promise<object> {
+    const reqUrl: string = baseUrl + apiBase + "/notes/local-timeline";
+    const payload: object = {
         withFiles: withFiles,
         withRenotes: withRenotes,
         withReplies: withReplies,
         limit: noteCount
     };
-    let headers: Headers = new Headers();
+    const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
-    const postRequest = await fetchJSON(
-        'POST',
-        headers,
-        payload,
-        reqUrl
-    );
-    return postRequest;
+    try {
+        const postRequest: object = await fetchJSON(
+            'POST',
+            headers,
+            payload,
+            reqUrl
+        );
+        return postRequest;
+    }
+    catch(e){
+        throw e;
+    }
 }
 
 export async function globalTimeline(
@@ -33,23 +44,28 @@ export async function globalTimeline(
     withRenotes: boolean,
     withReplies: boolean,
     noteCount: number
-): Promise<Object> {
-    let reqUrl: string = baseUrl + apiBase + "/notes/global-timeline";
-    let payload: Object = {
+): Promise<object> {
+    const reqUrl: string = baseUrl + apiBase + "/notes/global-timeline";
+    const payload: object = {
         withFiles: withFiles,
         withRenotes: withRenotes,
         withReplies: withReplies,
         limit: noteCount
     };
-    let headers: Headers = new Headers();
+    const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
-    const postRequest = await fetchJSON(
-        'POST',
-        headers,
-        payload,
-        reqUrl
-    );
-    return postRequest;
+    try {
+        const postRequest: object = await fetchJSON(
+            'POST',
+            headers,
+            payload,
+            reqUrl
+        );
+        return postRequest;
+    }
+    catch(e){
+        throw e;
+    }
 }
 
 export async function mentionedTimeline(
@@ -58,22 +74,27 @@ export async function mentionedTimeline(
     noteCount: number,
     fromFollowing: boolean,
     visibility: string
-): Promise<Object> {
-    let reqUrl: string = baseUrl + apiBase + "/notes/mentions";
-    let payload: Object = {
+): Promise<object> {
+    const reqUrl: string = baseUrl + apiBase + "/notes/mentions";
+    const payload: object = {
         following: fromFollowing,
         limit: noteCount,
         visibility: visibility
     };
-    let headers: Headers = new Headers();
+    const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
-    const postRequest = await fetchJSON(
-        'POST',
-        headers,
-        payload,
-        reqUrl
-    );
-    return postRequest;
+    try {
+        const postRequest: object = await fetchJSON(
+            'POST',
+            headers,
+            payload,
+            reqUrl
+        );
+        return postRequest;
+    }
+    catch(e){
+        throw e;
+    }
 }
 
 export default {

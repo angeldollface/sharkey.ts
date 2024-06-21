@@ -1,34 +1,57 @@
+/*
+LUHNY by Alexander Abraham, 
+a.k.a. "Angel Dollface".
+Licensed under the DSL v1.
+*/
+
 import { getUserInfo } from './user.ts';
 import { fetchJSON } from './network.ts';
 
+// Attempts to retrieve the notes a user
+// has posted. The username of the user needs
+// to be specified, the Misskey/Sharkey instance that they
+// are on, the base API route and the URL to said instance.
 export async function getUserNotes(
     userName: string, 
     server: string,
     apiBase: string,
     baseUrl: string
-): Promise<Object> {
-    let userInfo: Object = await getUserInfo(
+): Promise<object> {
+    const userInfo: object = await getUserInfo(
         userName, 
         server, 
         baseUrl, 
         apiBase
     );
-    let userId: string = userInfo.id;
-    let reqUrl: string = baseUrl + apiBase + "/users/notes";
-    let headers: Headers = new Headers();
+    let userId: string = '';
+    if (Object.prototype.hasOwnProperty.call(userInfo, 'id')){
+        userId = new Map(Object.entries(userInfo)).get('id');
+    }
+    else {
+        throw 'Could not retrieve user ID to complete this request!';
+    }
+    const reqUrl: string = baseUrl + apiBase + "/users/notes";
+    const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
-    let payload: Object = {
+    const payload: object = {
         userId: userId
     };
-    const postRequest = await fetchJSON(
-        'POST',
-        headers,
-        payload,
-        reqUrl
-    );
-    return postRequest;
+    try {
+        const postRequest: object = await fetchJSON(
+            'POST',
+            headers,
+            payload,
+            reqUrl
+        );
+        return postRequest;
+    }
+    catch(e){
+        throw e;
+    }
 }
 
+// Attempts to create a note containing only
+// text.
 export async function createTextNoteForUser(
     apiBase: string,
     baseUrl: string,
@@ -40,14 +63,10 @@ export async function createTextNoteForUser(
     noExtractMentions: boolean,
     noExtractHashtags: boolean,
     noExtractEmojis: boolean,
-    channelId: string,
     note: string
-): Promise<Object> {
-    let reqUrl: string = baseUrl + apiBase + "/notes/create";
-    let headers: Headers = new Headers();
-    headers.append('Content-Type','application/json');
-    headers.append('Authorization', apiToken);
-    let payload: Object = {
+): Promise<object> {
+    const reqUrl: string = baseUrl + apiBase + "/notes/create";
+    const payload: object = {
         visibility: visibility,
         cw: msg,
         localOnly: localOnly,
@@ -55,82 +74,113 @@ export async function createTextNoteForUser(
         noExtractMentions: noExtractMentions,
         noExtractHashtags: noExtractHashtags,
         noExtractEmojis: noExtractEmojis,
-        channelId: channelId,
         text: note
     };
-    const postRequest = await fetchJSON(
-        'POST',
-        headers,
-        payload,
-        reqUrl
-    );
-    return postRequest;
+    try {
+        const postRequest: object = await fetchJSON(
+            'POST',
+            {
+                "Content-Type":"application/json",
+                "Authorization":apiToken
+            },
+            payload,
+            reqUrl
+        );
+        return postRequest;
+    }
+    catch(e){
+        throw e;
+    }
 }
 
+// Deletes a note for a user who owns the supplied
+// API Token with the supplied URL to the Misskey/Sharkey instance, 
+// the id of the note and the route to the instance's API.
 export async function deleteNoteForUser(
     apiBase: string,
     baseUrl: string,
     apiToken: string,
     noteId: string
-): Promise<Object> {
-    let reqUrl: string = baseUrl + apiBase + "/notes/create";
-    let headers: Headers = new Headers();
+): Promise<object> {
+    const reqUrl: string = baseUrl + apiBase + "/notes/create";
+    const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
     headers.append('Authorization', apiToken);
-    let payload: Object = {
+    const payload: object = {
         noteId: noteId
     };
-    const postRequest = await fetchJSON(
-        'POST',
-        headers,
-        payload,
-        reqUrl
-    );
-    return postRequest;
+    try {
+        const postRequest: object = await fetchJSON(
+            'POST',
+            headers,
+            payload,
+            reqUrl
+        );
+        return postRequest;
+    }
+    catch(e){
+        throw e;
+    }
 }
 
+// Attempts to like a note with the supplied id
+// for a user who owns the  supplied API token on a supplied 
+// instance through the supplied basic API route.
 export async function likeNoteForUser(
     apiBase: string,
     baseUrl: string,
     apiToken: string,
     noteId: string
-): Promise<Object> {
-    let reqUrl: string = baseUrl + apiBase + "/notes/favorites/create";
-    let headers: Headers = new Headers();
+): Promise<object> {
+    const reqUrl: string = baseUrl + apiBase + "/notes/favorites/create";
+    const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
     headers.append('Authorization', apiToken);
-    let payload: Object = {
+    const payload: object = {
         noteId: noteId
     };
-    const postRequest = await fetchJSON(
-        'POST',
-        headers,
-        payload,
-        reqUrl
-    );
-    return postRequest;
+    try {
+        const postRequest: object = await fetchJSON(
+            'POST',
+            headers,
+            payload,
+            reqUrl
+        );
+        return postRequest;
+    }
+    catch(e){
+        throw e;
+    }
 }
 
+// Attempts to unlike a note with the supplied id
+// for a user who owns the  supplied API token on a supplied 
+// instance through the supplied basic API route.
 export async function unlikeNoteForUser(
     apiBase: string,
     baseUrl: string,
     apiToken: string,
     noteId: string
-): Promise<Object> {
-    let reqUrl: string = baseUrl + apiBase + "/notes/favorites/delete";
-    let headers: Headers = new Headers();
+): Promise<object> {
+    const reqUrl: string = baseUrl + apiBase + "/notes/favorites/delete";
+    const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
     headers.append('Authorization', apiToken);
-    let payload: Object = {
+    const payload: object = {
         noteId: noteId
     };
-    const postRequest = await fetchJSON(
-        'POST',
-        headers,
-        payload,
-        reqUrl
-    );
-    return postRequest;
+    try {
+        const postRequest: object = await fetchJSON(
+            'POST',
+            headers,
+            payload,
+            reqUrl
+        );
+        return postRequest;
+    }
+    catch(e){
+        throw e;
+    }
 }
 
 export default {

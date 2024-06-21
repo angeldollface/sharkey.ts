@@ -1,3 +1,9 @@
+/*
+LUHNY by Alexander Abraham, 
+a.k.a. "Angel Dollface".
+Licensed under the DSL v1.
+*/
+
 import { fetchJSON } from './network.ts';
 
 export async function searchForUser(
@@ -6,23 +12,28 @@ export async function searchForUser(
     baseUrl: string,
     apiBase: string,
     resultCount: number
-): Promise<Object> {
-    let reqUrl: string = baseUrl + apiBase + "/users/search-by-username-and-host";
-    let payload: Object = {
+): Promise<object> {
+    const reqUrl: string = baseUrl + apiBase + "/users/search-by-username-and-host";
+    const payload: object = {
         limit: resultCount,
         detail: false,
         username: userName,
         host: server
     };
-    let headers: Headers = new Headers();
+    const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
-    const postRequest = await fetchJSON(
-        'POST',
-        headers,
-        payload,
-        reqUrl
-    );
-    return postRequest;
+    try {
+        const postRequest: object = await fetchJSON(
+            'POST',
+            headers,
+            payload,
+            reqUrl
+        );
+        return postRequest;
+    }
+    catch (e){
+        throw e;
+    }
 }
 
 export default searchForUser;
