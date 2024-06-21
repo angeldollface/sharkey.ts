@@ -12,7 +12,7 @@ Licensed under the DSL v1.
 // and the URL as a string.
 export async function fetchJSON(
     method: string,
-    headers: object,
+    headers: Headers,
     params: object,
     reqUrl: string
 ): Promise<object> {

@@ -24,17 +24,28 @@ async function main(): Promise<void> {
         baseUrl,
         apiToken,
         "public",
-        "Sharkey.ts",
+        "This note was sent from the the Sharkey.ts test script!",
         false,
         "likeOnly",
         false,
         false,
         false,
-        "Hello from Sharkey.ts!"
+        "."
     );
 
     console.log('Note created:');
     console.log(createdNote);
+    console.log('\n\n');
+
+    const noteNuked: object = await sharkey.deleteNoteForUser(
+        apiBase,
+        baseUrl,
+        apiToken,
+        "9usnc5u8yjyu01i4"
+    );
+
+    console.log('Note deleted:');
+    console.log(noteNuked);
     console.log('\n\n');
 }
 

@@ -66,6 +66,8 @@ export async function createTextNoteForUser(
     note: string
 ): Promise<object> {
     const reqUrl: string = baseUrl + apiBase + "/notes/create";
+    const headers: Headers = new Headers();
+    headers.append('Content-Type','application/json');
     const payload: object = {
         visibility: visibility,
         cw: msg,
@@ -74,15 +76,13 @@ export async function createTextNoteForUser(
         noExtractMentions: noExtractMentions,
         noExtractHashtags: noExtractHashtags,
         noExtractEmojis: noExtractEmojis,
-        text: note
+        text: note,
+        i: apiToken
     };
     try {
         const postRequest: object = await fetchJSON(
             'POST',
-            {
-                "Content-Type":"application/json",
-                "Authorization":apiToken
-            },
+            headers,
             payload,
             reqUrl
         );
@@ -102,11 +102,11 @@ export async function deleteNoteForUser(
     apiToken: string,
     noteId: string
 ): Promise<object> {
-    const reqUrl: string = baseUrl + apiBase + "/notes/create";
+    const reqUrl: string = baseUrl + apiBase + "/notes/delete";
     const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
-    headers.append('Authorization', apiToken);
     const payload: object = {
+        i: apiToken,
         noteId: noteId
     };
     try {
@@ -135,9 +135,9 @@ export async function likeNoteForUser(
     const reqUrl: string = baseUrl + apiBase + "/notes/favorites/create";
     const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
-    headers.append('Authorization', apiToken);
     const payload: object = {
-        noteId: noteId
+        noteId: noteId,
+        i: apiToken
     };
     try {
         const postRequest: object = await fetchJSON(
@@ -165,9 +165,9 @@ export async function unlikeNoteForUser(
     const reqUrl: string = baseUrl + apiBase + "/notes/favorites/delete";
     const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
-    headers.append('Authorization', apiToken);
     const payload: object = {
-        noteId: noteId
+        noteId: noteId,
+        i: apiToken
     };
     try {
         const postRequest: object = await fetchJSON(
