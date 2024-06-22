@@ -29,11 +29,17 @@ export async function fetchJSON(
                 body: JSON.stringify(params),
             } 
         );
-        const json: object = await postRequest.json();
-        return json;
+        if (postRequest.body === null && postRequest.ok){
+            return ({"action":"completed"} as object)
+        }
+        else {
+            const json: object = await postRequest.json();
+            return json;
+        }
     }
     catch(e){
-        return ({"error": {"msg":e.toString()}} as object);
+        throw e;
+        //return ({"error": {"msg":e.toString()}} as object);
     }
 }
 

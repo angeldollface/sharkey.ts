@@ -132,10 +132,10 @@ export async function deleteNoteForUser(
     const reqUrl: string = baseUrl + apiBase + "/notes/delete";
     const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
-    const payload: object = {
+    const payload = {
+        noteId: noteId,
         i: apiToken,
-        noteId: noteId
-    };
+    } as object;
     try {
         const postRequest: object = await fetchJSON(
             'POST',

@@ -10,6 +10,7 @@ import * as sharkey from './mod.ts';
 
 // Importing the API to test equality.
 import { assertEquals } from "@std/assert";
+import { deleteNoteForUser } from "./src/notes.ts";
 
 // Basic variables that will not
 // change.
@@ -17,18 +18,36 @@ const apiBase: string = "/api";
 const server: string = "blahaj.zone";
 const userName: string = "angeldollface666";
 const baseUrl: string = "https://blahaj.zone";
+const noteToBeLiked: string = "9utzyrsmyoof00hr";
 const apiToken: string = (Deno.env.get("BLAHAJ_API_TOKEN") as string);
 
 /* "./src/notes.ts TESTS START */
 
-/*
+Deno.test(
+	"Testing the \"likeNoteForUser\" function.",
+	async () => {
+		const likedNote: object = await sharkey.likeNoteForUser(
+			apiBase,
+			baseUrl,
+			apiToken,
+			noteToBeLiked
+		);
+		assertEquals(sharkey.objectIsErrorResponse(likedNote), (false));
+	}
+);
 
-Missing:
-- deleteNote
-- likeNote
-- unlikeNote
-
-*/
+Deno.test(
+	"Testing the \"unlikeNoteForUser\" function.",
+	async () => {
+		const unlikedNote: object = await sharkey.unlikeNoteForUser(
+			apiBase,
+			baseUrl,
+			apiToken,
+			noteToBeLiked
+		);
+		assertEquals(sharkey.objectIsErrorResponse(unlikedNote), (false));
+	}
+);
 
 Deno.test(
 	"Testing the \"getUserNotes\" function.",
@@ -59,6 +78,40 @@ Deno.test(
 			"Posted from the test runner of \"Sharkey.ts\"."
 		);
 		assertEquals(sharkey.objectIsErrorResponse(createdNote), (false));
+	}
+);
+
+Deno.test(
+	"Testing the \"deleteNoteForUser\" function.",
+	async () => {
+		const newNote: object = await sharkey.createTextNoteForUser(
+			apiBase,
+			baseUrl,
+			apiToken,
+			"public",
+			false,
+			"likeOnly",
+			true,
+			true,
+			true,
+			"This not only exists to be deleted."
+		);
+		if (sharkey.objectIsErrorResponse(newNote) === false){
+			if (Object.prototype.hasOwnProperty.call(newNote, 'createdNote')){
+				const actualNote: object = new Map(Object.entries(newNote)).get('createdNote');
+				const id: string = new Map(Object.entries(actualNote)).get('id');
+				const deletedNote: object = await deleteNoteForUser(
+					apiBase,
+					baseUrl,
+					apiToken,
+					id
+				);
+				assertEquals(sharkey.objectIsErrorResponse(deletedNote), (false));
+			}
+		}
+		else {
+			throw 'Note to be deleted could not be created!';
+		}
 	}
 );
 
@@ -131,12 +184,6 @@ Deno.test(
 /* "./src/search.ts TESTS END */
 
 /* "./src/user.ts" TESTS START */
-
-/*
-Missing:
-- getUserFollowers
-- getUserFollowing
-*/
 
 Deno.test(
 	"Testing the \"getUserInfo\" function.",
