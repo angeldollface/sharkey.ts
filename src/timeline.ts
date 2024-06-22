@@ -104,7 +104,7 @@ export async function globalTimeline(
  * @returns {Promise<object>} Returns an object containing all the notes a user has been mentioned in or an error object.
 */
 export async function mentionedTimeline(
-		apiToken: string,
+	apiToken: string,
     baseUrl: string,
     apiBase: string,
     noteCount: number,
@@ -113,7 +113,7 @@ export async function mentionedTimeline(
 ): Promise<object> {
     const reqUrl: string = baseUrl + apiBase + "/notes/mentions";
     const payload: object = {
-				i: apiToken,
+		i: apiToken,
         following: fromFollowing,
         limit: noteCount,
         visibility: visibility

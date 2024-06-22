@@ -152,7 +152,8 @@ export async function followUser(
     headers.append('Authorization', apiToken);
     const payload: object = {
         userId: userId,
-        withReplies: withReplies
+        withReplies: withReplies,
+        i: apiToken
     };
     try {
         const postRequest = await fetchJSON(
@@ -184,7 +185,7 @@ export async function unfollowUser(
     baseUrl: string,
     apiBase: string,
 ): Promise<object> {
-    const reqUrl: string = baseUrl + apiBase + "/following/deconste";
+    const reqUrl: string = baseUrl + apiBase + "/following/delete";
     const user: object = await getUserInfo(
         userName,
         server,
@@ -203,6 +204,7 @@ export async function unfollowUser(
     headers.append('Authorization', apiToken);
     const payload: object = {
         userId: userId,
+        i: apiToken
     };
     try {
         const postRequest = await fetchJSON(

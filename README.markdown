@@ -11,8 +11,8 @@ This library for Deno is there to interact with Sharkey from Typescript. I wrote
 ## TODO :gear:
 
 - [ ] Write unit tests.
-- [x] Write documentation for all APIs.
 - [ ] Upload to [deno.land/x](https://deno.land/x).
+- [x] Write documentation for all APIs.
 - [x] Add GitHub CI for unit tests.
 - [x] Add comments.
 
