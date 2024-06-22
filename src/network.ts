@@ -6,10 +6,14 @@ Licensed under the DSL v1.
 
 'use strict';
 
-// Makes a request to the supplied URL
-// with the parameters supplied. The method must be supplied,
-// the headers via a "Headers" instance, any payload via an object
-// and the URL as a string.
+/**
+ * Attempts to fetch a response with the given
+ * paramaters.
+ * @param {string} method
+ * @param {Headers} headers
+ * @param {object} params
+ * @param {string} reqUrl
+*/
 export async function fetchJSON(
     method: string,
     headers: Headers,
@@ -28,7 +32,8 @@ export async function fetchJSON(
         return json;
     }
     catch(e){
-        throw e;
+        const errorObject: object = {"error": e.to_String()};
+				return errorObject;
     }
 }
 

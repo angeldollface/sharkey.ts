@@ -18,39 +18,15 @@ This library for Deno is there to interact with Sharkey from Typescript. I wrote
 
 ### APIs
 
-- The **Network** API:
-    - `fetchJSON`: Makes a request to the supplied URL with the supplied method, headers, and payload. To get more details please read the function definition in [`src/network.ts`](src/network.ts).
-- The **Notes** API:
-    - `createTextNoteForUser`: Attempts to create a note containing only text.
-        - `apiBase`: The base API route as a string.
-        - `baseUrl`: The URL to the instance as a string.
-        - `apiToken`: Your API token.
-        - `visibility`: Visibility setting as a string (`"public"`, `"home"`, `"followers"`, `"specified"`)
-        - `msg`: A message as a string.
-        - `localOnly`: Should the note be only on the home instance (boolean)?
-        - `reactionAcceptance`: What sort of reactions to this note can be accepted? One of the following options can be chosen: `"likeOnly"`, `"likeOnlyForRemote"`, `"nonSensitiveOnly"`, `"nonSensitiveOnlyForLocal"`, `"LikeOnlyForRemote"`
-        - `noExtractMentions`: Can be either `true` or `false`.
-        - `noExtractHashtags`: Can be either `true` or `false`.
-        - `noExtractEmojis`: Can be either `true` or `false`.
-        - `note`: Your actual note as a string.
-    - `deleteNoteForUser`:  Deletes a note for a user who owns the supplied API Token with the supplied URL to the Misskey/Sharkey instance, the id of the note and the route to the instance's API. To get more details please read the function definition in [`src/notes.ts`](src/notes.ts).
-    - `getUserNotes`: Attempts to retrieve the notes a user has posted. The username of the user needs to be specified, the Misskey/Sharkey instance that they are on, the base API route and the URL to said instance. To get more details please read the function definition in [`src/notes.ts`](src/notes.ts).
-    - `likeNoteForUser`: Attempts to like a note with the supplied id for a user who owns the  supplied API token on a supplied  instance through the supplied basic API route.
-    - `unlikeNoteForUser`: Attempts to unlike a note with the supplied id for a user who owns the  supplied API token on a supplied  instance through the supplied basic API route.
-- The **Search** API:
-    - `searchForUser`:
-- The **User** API:
-    - `followUser`:
-    - `getUserInfo`:
-    - `unfollowUser`:
-    - `getUserFollowers`:
-    - `getUserFollowing`:
-- The **Timeline** API:
-    - `globalTimeline`:
-    - `instanceTimeline`:
-    - `mentionedTimeline`:
+To get the documentation for this library, please run the following command from this library's root directory:
+
+```bash
+deno doc --html --name="Sharkey.ts" ./mod.ts
+```
 
 ### EXAMPLE
+
+To get a feel for how to use ***Sharkey.ts***, please read the unit tests localted in [`mod_test.ts`](mod_test.ts).
 
 ## CHANGELOG :black_nib:
 
