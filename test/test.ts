@@ -6,8 +6,6 @@ const userName: string = "angeldollface666";
 const baseUrl: string = "https://blahaj.zone";
 const apiToken: string = (Deno.env.get("BLAHAJ_API_TOKEN") as string);
 
-console.log(apiToken);
-
 async function main(): Promise<void> {
     const myNotes: object = await sharkey.getUserNotes(
         userName,
