@@ -33,7 +33,7 @@ export async function fetchJSON(
         return json;
     }
     catch(e){
-        return ({"error": {"msg":e.to_String()}} as object);
+        return ({"error": {"msg":e.toString()}} as object);
     }
 }
 

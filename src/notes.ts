@@ -166,12 +166,13 @@ export async function likeNoteForUser(
     apiToken: string,
     noteId: string
 ): Promise<object> {
-    const reqUrl: string = baseUrl + apiBase + "/notes/favorites/create";
+    const reqUrl: string = baseUrl + apiBase + "/notes/reactions/create";
     const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
     const payload: object = {
-        noteId: noteId,
-        i: apiToken
+        i: apiToken,
+				noteId: noteId,
+				reaction: "like",
     };
     try {
         const postRequest: object = await fetchJSON(
@@ -203,11 +204,12 @@ export async function unlikeNoteForUser(
     apiToken: string,
     noteId: string
 ): Promise<object> {
-    const reqUrl: string = baseUrl + apiBase + "/notes/favorites/delete";
+    const reqUrl: string = baseUrl + apiBase + "/notes/reactions/delete";
     const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
     const payload: object = {
         noteId: noteId,
+				reaction: "like",
         i: apiToken
     };
     try {

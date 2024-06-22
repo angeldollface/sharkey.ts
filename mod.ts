@@ -17,7 +17,7 @@ export { searchForUser } from './src/search.ts';
 export { objectIsErrorResponse } from './src/checker.ts';
 
 // Exporting everything from the "notes" module.
-export { createTextNoteForUser, deleteNoteForUser, getUserNotes} from './src/notes.ts';
+export { createTextNoteForUser, deleteNoteForUser, getUserNotes, likeNoteForUser, unlikeNoteForUser } from './src/notes.ts';
 
 // Exporting everything from the "timeline" module.
 export { globalTimeline, instanceTimeline, mentionedTimeline } from './src/timeline.ts';

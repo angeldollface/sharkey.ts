@@ -17,6 +17,7 @@ const apiBase: string = "/api";
 const server: string = "blahaj.zone";
 const userName: string = "angeldollface666";
 const baseUrl: string = "https://blahaj.zone";
+const noteIdToBeLiked: string = "9utzyrsmyoof00hr";
 const apiToken: string = (Deno.env.get("BLAHAJ_API_TOKEN") as string);
 
 Deno.test(
@@ -48,5 +49,19 @@ Deno.test(
 			"Posted from the test runner of \"Sharkey.ts\"."
 		);
 		assertEquals(sharkey.objectIsErrorResponse(createdNote), (false));
+	}
+);
+
+Deno.test(
+	"Testing the \"likeNoteForUser\" function.",
+	async () => {
+		let likedNote: object = await sharkey.likeNoteForUser(
+			apiBase,
+			baseUrl,
+			apiToken,
+			noteIdToBeLiked
+		);
+		console.log(likedNote);
+		assertEquals(sharkey.objectIsErrorResponse(likedNote), (false));
 	}
 );
