@@ -8,19 +8,19 @@
 
 This library for Deno is there to interact with Sharkey from Typescript. I wrote this to prototype a library in another programming language and get a feel for Sharkey's API routes.
 
-## TODO :gear:
-
-- [x] Write unit tests.
-- [x] Upload to [deno.land/x](https://deno.land/x).
-- [x] Write documentation for all APIs.
-- [x] Add GitHub CI for unit tests.
-- [x] Add comments.
-
 ## USAGE :hammer:
 
 ### APIs
 
 To get the documentation for this library, please visit this library's documentation pages s[here](https://angeldollface.boo/sharkey.ts). Please also take care to import ***Sharkey.ts*** via an HTTP import or by adding it to your Deno project. The documentation gives inaccurate information on imports (This is not down to me, this is a known issue with Deno.).
+
+You can import any of ***Sharkey.ts's*** APIs by adding the following line to your Typescript file:
+
+```Typescript
+import { functionName } 'https://deno.land/x/sharkey/mod.ts';
+```
+
+`functionName` represents any of the function signatures present in the documentation pages.
 
 ### EXAMPLE
 
