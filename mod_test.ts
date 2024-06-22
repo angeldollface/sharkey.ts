@@ -169,14 +169,40 @@ Deno.test(
 Deno.test(
 	"Testing the \"unfollowUser\" function.",
 	async () => {
-		const fUser: object = await sharkey.unfollowUser(
+		const ufUser: object = await sharkey.unfollowUser(
 			"frisaf",
 			"blahaj.zone",
 			apiToken,
 			baseUrl,
 			apiBase
 		);
-		assertEquals(sharkey.objectIsErrorResponse(fUser), (false));
+		assertEquals(sharkey.objectIsErrorResponse(ufUser), (false));
+	}
+);
+
+Deno.test(
+	"Testing the \"getUserFollowing\" function.",
+	async () => {
+		const userFollowing: object = await sharkey.getUserFollowing(
+			"Akane3",
+			"misskey.io",
+			"https://misskey.io",
+			apiBase
+		);
+		assertEquals(sharkey.objectIsErrorResponse(userFollowing), (false));
+	}
+);
+
+Deno.test(
+	"Testing the \"getUserFollowers\" function.",
+	async () => {
+		const userFollowers: object = await sharkey.getUserFollowers(
+			"Akane3",
+			"misskey.io",
+			"https://misskey.io",
+			apiBase
+		);
+		assertEquals(sharkey.objectIsErrorResponse(userFollowers), (false));
 	}
 );
 

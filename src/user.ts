@@ -60,9 +60,23 @@ export async function getUserFollowing(
     apiBase: string
 ): Promise<object> {
     const reqUrl: string = baseUrl + apiBase + "/users/following";
+    const targetUserInfo: object = await getUserInfo(
+        userName,
+        server,
+        baseUrl,
+        apiBase
+    );
+    let userId: string = '';
+    if (Object.prototype.hasOwnProperty.call(targetUserInfo, 'id')){
+        userId = new Map(Object.entries(targetUserInfo)).get('id');
+    }
+    else {
+        throw 'Could not retrieve user ID to complete this request!';
+    }
     const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
     const payload: object = {
+        userId: userId,
         username: userName,
         host: server
     };
@@ -95,9 +109,23 @@ export async function getUserFollowers(
     apiBase: string
 ): Promise<object> {
     const reqUrl: string = baseUrl + apiBase + "/users/followers";
+    const targetUserInfo: object = await getUserInfo(
+        userName,
+        server,
+        baseUrl,
+        apiBase
+    );
+    let userId: string = '';
+    if (Object.prototype.hasOwnProperty.call(targetUserInfo, 'id')){
+        userId = new Map(Object.entries(targetUserInfo)).get('id');
+    }
+    else {
+        throw 'Could not retrieve user ID to complete this request!';
+    }
     const headers: Headers = new Headers();
     headers.append('Content-Type','application/json');
     const payload: object = {
+        userId: userId,
         username: userName,
         host: server
     };
