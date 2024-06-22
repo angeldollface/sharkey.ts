@@ -45,7 +45,7 @@ export async function searchForUser(
         return postRequest;
     }
     catch (e){
-        return ({"error": e.toString()} as object);
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 

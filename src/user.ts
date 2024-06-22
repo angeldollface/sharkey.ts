@@ -41,7 +41,7 @@ export async function getUserInfo(
         return postRequest;
     }
     catch(e){
-        return ({"error": e.toString()} as object);
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 
@@ -76,7 +76,7 @@ export async function getUserFollowing(
         return postRequest;
     }
     catch(e){
-        return ({"error": e.toString() as object});
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 
@@ -111,7 +111,7 @@ export async function getUserFollowers(
         return postRequest;
     }
     catch(e){
-        return ({"error": e.toString()} as object);
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 
@@ -164,7 +164,7 @@ export async function followUser(
         return postRequest;
     }
     catch(e){
-        return ({"error": e.toString()} as object);
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 
@@ -214,7 +214,7 @@ export async function unfollowUser(
         return postRequest;
     }
     catch(e){
-        return ({"error":e.toString()} as object);
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 

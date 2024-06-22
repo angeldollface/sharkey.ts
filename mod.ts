@@ -13,6 +13,9 @@ export { fetchJSON } from './src/network.ts';
 // Exporting everything from the "search" module.
 export { searchForUser } from './src/search.ts';
 
+// Exporting everything from the "checker" module.
+export { objectIsErrorResponse } from './src/checker.ts';
+
 // Exporting everything from the "notes" module.
 export { createTextNoteForUser, deleteNoteForUser, getUserNotes} from './src/notes.ts';
 

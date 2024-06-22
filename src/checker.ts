@@ -15,10 +15,10 @@ export function objectIsErrorResponse(
 ): boolean {
 	let result: boolean = false;
 	if (subject.hasOwnProperty("error")){
-		// Do nothing.
+		result = true;
 	}
 	else {
-		result = true;
+		// Do nothing.
 	}
 	return result;
 }

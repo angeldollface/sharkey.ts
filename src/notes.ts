@@ -55,7 +55,7 @@ export async function getUserNotes(
         return postRequest;
     }
     catch(e){
-        return ({"error": e.toString()} as object);
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 
@@ -79,7 +79,6 @@ export async function createTextNoteForUser(
     baseUrl: string,
     apiToken: string,
     visibility: string,
-    msg: string,
     localOnly: boolean,
     reactionAcceptance: string,
     noExtractMentions: boolean,
@@ -92,7 +91,6 @@ export async function createTextNoteForUser(
     headers.append('Content-Type','application/json');
     const payload: object = {
         visibility: visibility,
-        cw: msg,
         localOnly: localOnly,
         reactionAcceptance: reactionAcceptance,
         noExtractMentions: noExtractMentions,
@@ -111,7 +109,7 @@ export async function createTextNoteForUser(
         return postRequest;
     }
     catch(e){
-        return ({"error": e.toString()} as object);
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 
@@ -148,7 +146,7 @@ export async function deleteNoteForUser(
         return postRequest;
     }
     catch(e){
-        return ({"error": e.toString()} as object);
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 
@@ -185,7 +183,7 @@ export async function likeNoteForUser(
         return postRequest;
     }
     catch(e){
-        return ({"error":e.toString()} as object);
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 
@@ -222,7 +220,7 @@ export async function unlikeNoteForUser(
         return postRequest;
     }
     catch(e){
-        return ({"error": e.toString()} as object);
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 

@@ -47,7 +47,7 @@ export async function instanceTimeline(
         return postRequest;
     }
     catch(e){
-        return ({"error": e.toString()} as object);
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 
@@ -89,7 +89,7 @@ export async function globalTimeline(
         return postRequest;
     }
     catch(e){
-        return ({"error": e.toString()} as object);
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 
@@ -130,7 +130,7 @@ export async function mentionedTimeline(
         return postRequest;
     }
     catch(e){
-        return ({"error":e.toString()} as object);
+        return ({"error":{"msg":e.toString()}} as object);
     }
 }
 
