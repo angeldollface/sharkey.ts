@@ -20,11 +20,11 @@ This library for Deno is there to interact with Sharkey from Typescript. I wrote
 
 ### APIs
 
-To get the documentation for this library, please visit this library's documentation [here](https://angeldollface.boo/sharkey.ts).
+To get the documentation for this library, please visit this library's documentation pages s[here](https://angeldollface.boo/sharkey.ts). Please also take care to import ***Sharkey.ts*** via an HTTP import or by adding it to your Deno project. The documentation gives inaccurate information on imports (This is not down to me, this is a known issue with Deno.).
 
 ### EXAMPLE
 
-To get a feel for how to use ***Sharkey.ts***, please read the unit tests localted in [`mod_test.ts`](mod_test.ts).
+To get a feel for how to use ***Sharkey.ts***, please read the unit tests located in [`mod_test.ts`](mod_test.ts).
 
 ## CHANGELOG :black_nib:
 

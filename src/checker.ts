@@ -14,7 +14,7 @@ export function objectIsErrorResponse(
 	subject: object
 ): boolean {
 	let result: boolean = false;
-	if (subject.hasOwnProperty("error")){
+	if (Object.prototype.hasOwnProperty.call(subject, "error")){
 		result = true;
 	}
 	else {
@@ -23,4 +23,5 @@ export function objectIsErrorResponse(
 	return result;
 }
 
+// Exporting everything.
 export default objectIsErrorResponse;

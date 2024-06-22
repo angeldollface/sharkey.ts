@@ -4,8 +4,6 @@ a.k.a. "Angel Dollface".
 Licensed under the DSL v1.
 */
 
-'use strict';
-
 /**
  * Attempts to fetch a response with the given
  * paramaters.
@@ -13,7 +11,7 @@ Licensed under the DSL v1.
  * @param {Headers} headers
  * @param {object} params
  * @param {string} reqUrl
- * @returns {Promise<object>} An JSON response is returned or an error object.
+ * @returns {Promise<object>} A JSON response is returned or an error object.
 */
 export async function fetchJSON(
     method: string,
@@ -38,9 +36,9 @@ export async function fetchJSON(
         }
     }
     catch(e){
-        throw e;
-        //return ({"error": {"msg":e.toString()}} as object);
+        return ({"error": {"msg":e.toString()}} as object);
     }
 }
 
+// Exporting everything.
 export default fetchJSON;

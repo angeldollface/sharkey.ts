@@ -4,8 +4,6 @@ a.k.a. "Angel Dollface".
 Licensed under the DSL v1.
 */
 
-'use strict';
-
 import { getUserInfo } from './user.ts';
 import { fetchJSON } from './network.ts';
 
@@ -13,12 +11,12 @@ import { fetchJSON } from './network.ts';
  * Attempts to retrieve the notes a user
  * has posted. The username of the user needs
  * to be specified, the Misskey/Sharkey instance that they
- * are on, the base API route and the URL to said instance.
+ * are on, the base API route, and the URL to said instance.
  * @param {string} userName
  * @param {string} server
  * @param {string} apiBase
  * @param {string} baseUrl
- * @returns {Promise<object>} An object of all a user's notes or an error object.
+ * @returns {Promise<object>} An object of all a user's notes is returned or an error object.
 */
 export async function getUserNotes(
     userName: string, 
@@ -60,7 +58,7 @@ export async function getUserNotes(
 }
 
 /**
- * Attempts to create a note containing only text
+ * Attempts to create a note containing only text.
  * @param {string} apiBase
  * @param {string} baseUrl
  * @param {string} apiToken
@@ -72,7 +70,7 @@ export async function getUserNotes(
  * @param {boolean} noExtractHashtags
  * @param {boolean} noExtractEmojis
  * @param {string} string
- * @returns {Promise<object>} An object of the posted note or an error object.
+ * @returns {Promise<object>} An object of the posted note is returned or an error object.
 */ 
 export async function createTextNoteForUser(
     apiBase: string,
@@ -116,7 +114,7 @@ export async function createTextNoteForUser(
 /**
  * Deletes a note for a user who owns the supplied
  * API Token with the supplied URL to the Misskey/Sharkey instance, 
- * the id of the note and the route to the instance's API.
+ * the id of the note, and the route to the instance's API.
  * @param {string} apiBase
  * @param {string} baseUrl
  * @param {string} apiToken

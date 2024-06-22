@@ -4,14 +4,12 @@ a.k.a. "Angel Dollface".
 Licensed under the DSL v1.
 */
 
-'use strict';
-
 import { fetchJSON } from './network.ts';
 
 /**
- * Searches for a user on the given server with the given username
- * the given baseurl and basic API route and with the supplied number
- * of results. The number of results cannot exceed 100.
+ * Searches for a user on the given server with the given username,
+ * the given baseurl, and basic API route and with the supplied number
+ * of results. The number of results cannot exceed 99.
  * @param {string} userName
  * @param {string} server
  * @param {string} baseUrl
@@ -49,4 +47,5 @@ export async function searchForUser(
     }
 }
 
+// Exporting everything.
 export default searchForUser;

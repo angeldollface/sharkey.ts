@@ -15,7 +15,7 @@ jobs:
         run: deno test --allow-env --allow-net
       - name: "Generate documentation."
         run: deno doc --html --name="Sharkey.ts" ./mod.ts
-      - name: "Disable Jekyll"
+      - name: "Disable Jekyll."
         run: touch .nojekyll && mv .nojekyll ./docs
       - name: "Deploy the documentation."
         uses: JamesIves/github-pages-deploy-action@v4.2.5

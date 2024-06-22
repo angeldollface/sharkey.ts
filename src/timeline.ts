@@ -4,8 +4,6 @@ a.k.a. "Angel Dollface".
 Licensed under the DSL v1.
 */
 
-'use strict';
-
 import { fetchJSON } from './network.ts';
 
 /**
@@ -18,7 +16,7 @@ import { fetchJSON } from './network.ts';
  * @param {boolean} withRenotes
  * @param {boolean} withReplies
  * @param {number} noteCount
- * @returns {Promise<object>} An object of all the notes and other activity is returned or an error object. An error object is returned if failres are enocuntered.
+ * @returns {Promise<object>} An object of all the notes and other activity is returned or an error object.
 */
 export async function instanceTimeline(
     baseUrl: string,

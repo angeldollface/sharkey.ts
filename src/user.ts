@@ -4,8 +4,6 @@ a.k.a. "Angel Dollface".
 Licensed under the DSL v1.
 */
 
-'use strict';
-
 import { fetchJSON } from './network.ts';
 
 /**
@@ -46,7 +44,7 @@ export async function getUserInfo(
 }
 
 /**
- * Returns an object containing all users the supplied is following.
+ * Returns an object containing all users the supplied username is following.
  * @param {string} userName
  * @param {string} server
  * @param {string} baseUrl

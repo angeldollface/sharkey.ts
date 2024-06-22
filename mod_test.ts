@@ -10,7 +10,6 @@ import * as sharkey from './mod.ts';
 
 // Importing the API to test equality.
 import { assertEquals } from "@std/assert";
-import { deleteNoteForUser } from "./src/notes.ts";
 
 // Basic variables that will not
 // change.
@@ -94,13 +93,13 @@ Deno.test(
 			true,
 			true,
 			true,
-			"This not only exists to be deleted."
+			"This note only exists to be deleted."
 		);
 		if (sharkey.objectIsErrorResponse(newNote) === false){
 			if (Object.prototype.hasOwnProperty.call(newNote, 'createdNote')){
 				const actualNote: object = new Map(Object.entries(newNote)).get('createdNote');
 				const id: string = new Map(Object.entries(actualNote)).get('id');
-				const deletedNote: object = await deleteNoteForUser(
+				const deletedNote: object = await sharkey.deleteNoteForUser(
 					apiBase,
 					baseUrl,
 					apiToken,
