@@ -18,11 +18,7 @@ This library for Deno is there to interact with Sharkey from Typescript. I wrote
 
 ### APIs
 
-To get the documentation for this library, please run the following command from this library's root directory:
-
-```bash
-deno doc --html --name="Sharkey.ts" ./mod.ts
-```
+To get the documentation for this library, please visit this library's documentation [here](https://angeldollface.boo/sharkey.ts).
 
 ### EXAMPLE
 
