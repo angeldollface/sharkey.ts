@@ -1,5 +1,5 @@
 /*
-LUHNY by Alexander Abraham, 
+SHARKEY.TS by Alexander Abraham, 
 a.k.a. "Angel Dollface".
 Licensed under the DSL v1.
 */
@@ -33,7 +33,7 @@ export async function fetchJSON(
     }
     catch(e){
         const errorObject: object = {"error": e.to_String()};
-				return errorObject;
+	return errorObject;
     }
 }
 
