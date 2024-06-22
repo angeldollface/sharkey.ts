@@ -1,9 +1,12 @@
 name: "SHARKEY.TS CI"
-on: [push, pull_request]
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - shell: bash
+        env:
+          BLAHAJ_API_TOKEN: ${{ secrets.BLAHAJ_API_TOKEN }}
       - uses: actions/checkout@master
       - name: Setup Deno
         uses: denolib/setup-deno@master
@@ -11,3 +14,4 @@ jobs:
           deno-version: 1.43.3
       - name: "Run tests."
         run: deno run --allow-env --allow-net test/test.ts
+      - name: "Test env variable."
