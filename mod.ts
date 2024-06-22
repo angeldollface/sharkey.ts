@@ -11,7 +11,7 @@ export { fetchJSON } from './src/network.ts';
 export { searchForUser } from './src/search.ts';
 
 // Exporting everything from the "checker" module.
-export { objectIsErrorResponse } from './src/checker.ts';
+export { objectIsErrorResponse, userExists } from './src/checkers.ts';
 
 // Exporting everything from the "timeline" module.
 export { globalTimeline, instanceTimeline, mentionedTimeline } from './src/timeline.ts';

@@ -34,6 +34,13 @@ To get a feel for how to use ***Sharkey.ts***, please read the unit tests locate
 - Upload to GitHub.
 - Upload to [deno.land/x](https://deno.land/x).
 
+### Version 0.2.0
+
+- [x] Added the `userExists` function.
+- [ ] More detailed, improved documentation.
+- [x] Improve the way test variables are handled.
+- [x] Renamed the `src/checker.ts` module to `src/checkers.ts`.
+
 ## NOTE :scroll:
 
 - *Sharkey.ts :shark: :sauropod:* by Alexander Abraham :black_heart: a.k.a. *"Angel Dollface" :dolls: :ribbon:*

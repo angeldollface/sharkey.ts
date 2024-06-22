@@ -13,12 +13,20 @@ import { assertEquals } from "@std/assert";
 
 // Basic variables that will not
 // change.
+const resultCount: number = 50;
 const apiBase: string = "/api";
+const searchResultCount: number = 5;
+const visibility: string = "public";
+const reaction: string = "likeOnly";
 const server: string = "blahaj.zone";
+const impossibleUser: string = "markzuck";
+const followTestSubject: string = "frisaf";
 const userName: string = "angeldollface666";
 const baseUrl: string = "https://blahaj.zone";
 const noteToBeLiked: string = "9utzyrsmyoof00hr";
 const apiToken: string = (Deno.env.get("BLAHAJ_API_TOKEN") as string);
+const noteToBeDeletedText: string = "This note only exists to be deleted.";
+const testNoteText: string = "Posted from the test runner of \"Sharkey.ts\".";
 
 /* "./src/notes.ts TESTS START */
 
@@ -68,13 +76,13 @@ Deno.test(
 			apiBase,
 			baseUrl,
 			apiToken,
-			"public",
+			visibility,
 			false,
-			"likeOnly",
+			reaction,
 			true,
 			true,
 			true,
-			"Posted from the test runner of \"Sharkey.ts\"."
+			testNoteText
 		);
 		assertEquals(sharkey.objectIsErrorResponse(createdNote), (false));
 	}
@@ -87,13 +95,13 @@ Deno.test(
 			apiBase,
 			baseUrl,
 			apiToken,
-			"public",
+			visibility,
 			false,
-			"likeOnly",
+			reaction,
 			true,
 			true,
 			true,
-			"This note only exists to be deleted."
+			noteToBeDeletedText
 		);
 		if (sharkey.objectIsErrorResponse(newNote) === false){
 			if (Object.prototype.hasOwnProperty.call(newNote, 'createdNote')){
@@ -127,7 +135,7 @@ Deno.test(
 			false,
 			false,
 			false,
-			50
+			resultCount
 		);
 		assertEquals(sharkey.objectIsErrorResponse(instanceTl), (false));
 	}
@@ -142,7 +150,7 @@ Deno.test(
 			false,
 			false,
 			false,
-			50
+			resultCount
 		);
 		assertEquals(sharkey.objectIsErrorResponse(globalTl), (false));
 	}
@@ -154,9 +162,9 @@ Deno.test(
 		const mentionedTl: object = await sharkey.mentionedTimeline(apiToken,
 			baseUrl,
 			apiBase,
-			50,
+			resultCount,
 			true,
-			"public"
+			visibility
 		);
 		assertEquals(sharkey.objectIsErrorResponse(mentionedTl), (false));
 	}
@@ -174,7 +182,7 @@ Deno.test(
 			server,
 			baseUrl,
 			apiBase,
-			5
+			searchResultCount
 		);
 		assertEquals(sharkey.objectIsErrorResponse(searchResults), (false));
 	}
@@ -201,8 +209,8 @@ Deno.test(
 	"Testing the \"followUser\" function.",
 	async () => {
 		const fUser: object = await sharkey.followUser(
-			"frisaf",
-			"blahaj.zone",
+			followTestSubject,
+			server,
 			apiToken,
 			baseUrl,
 			apiBase,
@@ -216,8 +224,8 @@ Deno.test(
 	"Testing the \"unfollowUser\" function.",
 	async () => {
 		const ufUser: object = await sharkey.unfollowUser(
-			"frisaf",
-			"blahaj.zone",
+			followTestSubject,
+			server,
 			apiToken,
 			baseUrl,
 			apiBase
@@ -230,9 +238,9 @@ Deno.test(
 	"Testing the \"getUserFollowing\" function.",
 	async () => {
 		const userFollowing: object = await sharkey.getUserFollowing(
-			"Akane3",
-			"misskey.io",
-			"https://misskey.io",
+			userName,
+			server,
+			baseUrl,
 			apiBase
 		);
 		assertEquals(sharkey.objectIsErrorResponse(userFollowing), (false));
@@ -243,9 +251,9 @@ Deno.test(
 	"Testing the \"getUserFollowers\" function.",
 	async () => {
 		const userFollowers: object = await sharkey.getUserFollowers(
-			"Akane3",
-			"misskey.io",
-			"https://misskey.io",
+			userName,
+			server,
+			baseUrl,
 			apiBase
 		);
 		assertEquals(sharkey.objectIsErrorResponse(userFollowers), (false));
@@ -253,3 +261,33 @@ Deno.test(
 );
 
 /* "./src/user.ts" TESTS END */
+
+/* "./src/checkers.ts" TESTS START */
+
+Deno.test(
+	"Testing the \"userExists\" function. (true case)",
+	async () => {
+		const userIs: boolean = await sharkey.userExists(
+			userName,
+			server,
+			baseUrl,
+			apiBase
+		);
+		assertEquals(userIs, (true));
+	}
+);
+
+Deno.test(
+	"Testing the \"userExists\" function. (false case)",
+	async () => {
+		const userIs: boolean = await sharkey.userExists(
+			impossibleUser,
+			server,
+			baseUrl,
+			apiBase
+		);
+		assertEquals(userIs, (false));
+	}
+);
+
+/* "./src/checkers.ts" TESTS END */
