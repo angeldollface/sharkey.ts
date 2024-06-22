@@ -13,6 +13,7 @@ Licensed under the DSL v1.
  * @param {Headers} headers
  * @param {object} params
  * @param {string} reqUrl
+ * @returns {Promise<object>} An JSON response is returned or an error object.
 */
 export async function fetchJSON(
     method: string,
@@ -32,8 +33,7 @@ export async function fetchJSON(
         return json;
     }
     catch(e){
-        const errorObject: object = {"error": e.to_String()};
-	return errorObject;
+        return ({"error": e.to_String()} as object);
     }
 }
 

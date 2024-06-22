@@ -1,11 +1,24 @@
 /*
-LUHNY by Alexander Abraham, 
+SHARKEY.TS by Alexander Abraham, 
 a.k.a. "Angel Dollface".
 Licensed under the DSL v1.
 */
 
+'use strict';
+
 import { fetchJSON } from './network.ts';
 
+/**
+ * Searches for a user on the given server with the given username
+ * the given baseurl and basic API route and with the supplied number
+ * of results. The number of results cannot exceed 100.
+ * @param {string} userName
+ * @param {string} server
+ * @param {string} baseUrl
+ * @param {string} apiBase
+ * @param {number} resultCount
+ * @returns {Promise<object>} An object with all search results is returned or an error object.
+*/
 export async function searchForUser(
     userName: string, 
     server: string,
@@ -32,7 +45,7 @@ export async function searchForUser(
         return postRequest;
     }
     catch (e){
-        throw e;
+        return ({"error": e.toString()} as object);
     }
 }
 

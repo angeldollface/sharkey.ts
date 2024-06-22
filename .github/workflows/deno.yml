@@ -12,12 +12,10 @@ jobs:
         with:
           deno-version: 1.43.3
       - name: "Run tests."
-        run: deno run --allow-env --allow-net test/test.ts
-
+        run: deno test
       - name: "Generate documentation."
         run: deno doc --html --name="Sharkey.ts" ./mod.ts
-
-      - name: "Deploy"
+      - name: "Deploy the documentation."
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages

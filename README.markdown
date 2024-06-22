@@ -1,5 +1,7 @@
 # SHARKEY.TS :shark: :sauropod:
 
+![GitHub CI](https://github.com/angeldollface/sharkey.ts/actions/workflows/deno.yml/badge.svg)
+
 ***A Typescript library for Deno to interact with Sharkey, a Mastodon alternative. :shark: :sauropod:***
 
 ## ABOUT :books:
@@ -9,10 +11,10 @@ This library for Deno is there to interact with Sharkey from Typescript. I wrote
 ## TODO :gear:
 
 - [ ] Write unit tests.
-- [ ] Write documentation for all APIs.
+- [x] Write documentation for all APIs.
 - [ ] Upload to [deno.land/x](https://deno.land/x).
-- [ ] Add GitHub CI for unit tests.
-- [ ] Add comments.
+- [x] Add GitHub CI for unit tests.
+- [x] Add comments.
 
 ## USAGE :hammer:
 

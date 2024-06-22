@@ -1,16 +1,25 @@
 /*
-LUHNY by Alexander Abraham, 
+SHARKEY.TS by Alexander Abraham, 
 a.k.a. "Angel Dollface".
 Licensed under the DSL v1.
 */
 
+'use strict';
+
 import { getUserInfo } from './user.ts';
 import { fetchJSON } from './network.ts';
 
-// Attempts to retrieve the notes a user
-// has posted. The username of the user needs
-// to be specified, the Misskey/Sharkey instance that they
-// are on, the base API route and the URL to said instance.
+/**
+ * Attempts to retrieve the notes a user
+ * has posted. The username of the user needs
+ * to be specified, the Misskey/Sharkey instance that they
+ * are on, the base API route and the URL to said instance.
+ * @param {string} userName
+ * @param {string} server
+ * @param {string} apiBase
+ * @param {string} baseUrl
+ * @returns {Promise<object>} An object of all a user's notes or an error object.
+*/
 export async function getUserNotes(
     userName: string, 
     server: string,
@@ -28,7 +37,7 @@ export async function getUserNotes(
         userId = new Map(Object.entries(userInfo)).get('id');
     }
     else {
-        throw 'Could not retrieve user ID to complete this request!';
+        return ({"error":"Could not retrieve user ID to complete this request!"} as object);
     }
     const reqUrl: string = baseUrl + apiBase + "/users/notes";
     const headers: Headers = new Headers();
@@ -46,12 +55,25 @@ export async function getUserNotes(
         return postRequest;
     }
     catch(e){
-        throw e;
+        return ({"error": e.toString()} as object);
     }
 }
 
-// Attempts to create a note containing only
-// text.
+/**
+ * Attempts to create a note containing only text
+ * @param {string} apiBase
+ * @param {string} baseUrl
+ * @param {string} apiToken
+ * @param {string} visibility
+ * @param {string} msg
+ * @param {boolean} localOnly
+ * @param {boolean} reactionAcceptance
+ * @param {boolean} noExtractMentions
+ * @param {boolean} noExtractHashtags
+ * @param {boolean} noExtractEmojis
+ * @param {string} string
+ * @returns {Promise<object>} An object of the posted note or an error object.
+*/ 
 export async function createTextNoteForUser(
     apiBase: string,
     baseUrl: string,
@@ -89,13 +111,20 @@ export async function createTextNoteForUser(
         return postRequest;
     }
     catch(e){
-        throw e;
+        return ({"error": e.toString()} as object);
     }
 }
 
-// Deletes a note for a user who owns the supplied
-// API Token with the supplied URL to the Misskey/Sharkey instance, 
-// the id of the note and the route to the instance's API.
+/**
+ * Deletes a note for a user who owns the supplied
+ * API Token with the supplied URL to the Misskey/Sharkey instance, 
+ * the id of the note and the route to the instance's API.
+ * @param {string} apiBase
+ * @param {string} baseUrl
+ * @param {string} apiToken
+ * @param {string} noteId
+ * @returns {Promise<object>} A success object is returned or an error object.
+*/
 export async function deleteNoteForUser(
     apiBase: string,
     baseUrl: string,
@@ -119,13 +148,20 @@ export async function deleteNoteForUser(
         return postRequest;
     }
     catch(e){
-        throw e;
+        return ({"error": e.toString()} as object);
     }
 }
 
-// Attempts to like a note with the supplied id
-// for a user who owns the  supplied API token on a supplied 
-// instance through the supplied basic API route.
+/**
+ * Attempts to like a note with the supplied id
+ * for a user who owns the  supplied API token on a supplied 
+ * instance through the supplied basic API route.
+ * @param {string} apiBase
+ * @param {string} baseUrl
+ * @param {string} apiToken
+ * @param {string} noteId
+ * @returns {Promise<object>} A success object is returned or an error object.
+*/
 export async function likeNoteForUser(
     apiBase: string,
     baseUrl: string,
@@ -149,13 +185,20 @@ export async function likeNoteForUser(
         return postRequest;
     }
     catch(e){
-        throw e;
+        return ({"error":e.toString()} as object);
     }
 }
 
-// Attempts to unlike a note with the supplied id
-// for a user who owns the  supplied API token on a supplied 
-// instance through the supplied basic API route.
+/**
+ * Attempts to unlike a note with the supplied id
+ * for a user who owns the  supplied API token on a supplied 
+ * instance through the supplied basic API route.
+ * @param {string} apiBase
+ * @param {string} baseUrl
+ * @param {string} apiToken
+ * @param {string} noteId
+ * @returns {Promise<object>} A success object is returned or an error object.
+*/
 export async function unlikeNoteForUser(
     apiBase: string,
     baseUrl: string,
@@ -179,10 +222,11 @@ export async function unlikeNoteForUser(
         return postRequest;
     }
     catch(e){
-        throw e;
+        return ({"error": e.toString()} as object);
     }
 }
 
+// Exporting everything.
 export default {
     getUserNotes,
     likeNoteForUser,
