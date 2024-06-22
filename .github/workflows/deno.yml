@@ -1,12 +1,11 @@
 name: "SHARKEY.TS CI"
 on: [push]
+env:
+  BLAHAJ_API_TOKEN: ${{ secrets.BLAHAJ_API_TOKEN }}
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - shell: bash
-        env:
-          BLAHAJ_API_TOKEN: ${{ secrets.BLAHAJ_API_TOKEN }}
       - uses: actions/checkout@master
       - name: Setup Deno
         uses: denolib/setup-deno@master
