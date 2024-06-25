@@ -246,11 +246,37 @@ export async function unfollowUser(
     }
 }
 
+export async function getUserFromToken(
+	baseUrl: string,
+	apiBase: string,
+	apiToken: string
+): Promise<object> {
+	const reqUrl: string = baseUrl + apiBase + "/i";
+	const headers: Headers = new Headers();
+	headers.append('Content-Type', 'application/json');
+	const payload: object = {
+		i: apiToken
+	};
+	try {
+		const postRequest = await fetchJSON(
+			'POST',
+			headers,
+			payload,
+			reqUrl
+		);
+		return postRequest;
+	}
+	catch(e){
+		return ({"error":{"msg":e.toString()}} as object);
+	}
+}
+
 // Exports everything.
 export default {
     followUser,
     getUserInfo,
     unfollowUser,
+		getUserFromToken,
     getUserFollowers,
     getUserFollowing
 };

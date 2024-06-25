@@ -260,6 +260,18 @@ Deno.test(
 	}
 );
 
+Deno.test(
+	"Testing the \"getUserFromToken\" function.",
+	async () => {
+		const userFetched: object = await sharkey.getUserFromToken(
+			baseUrl,
+			apiBase,
+			apiToken
+		);
+		assertEquals(sharkey.objectIsErrorResponse(userFetched), (false));
+	}
+);
+
 /* "./src/user.ts" TESTS END */
 
 /* "./src/checkers.ts" TESTS START */

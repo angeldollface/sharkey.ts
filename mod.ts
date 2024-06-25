@@ -17,7 +17,7 @@ export { objectIsErrorResponse, userExists } from './src/checkers.ts';
 export { globalTimeline, instanceTimeline, mentionedTimeline } from './src/timeline.ts';
 
 // Exporting everything from the "user" module.
-export { getUserInfo, getUserFollowers, getUserFollowing, followUser, unfollowUser } from './src/user.ts';
+export { getUserInfo, getUserFollowers, getUserFollowing, followUser, unfollowUser, getUserFromToken } from './src/user.ts';
 
 // Exporting everything from the "notes" module.
 export { createTextNoteForUser, deleteNoteForUser, getUserNotes, likeNoteForUser, unlikeNoteForUser } from './src/notes.ts';

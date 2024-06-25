@@ -37,6 +37,7 @@ To get a feel for how to use ***Sharkey.ts***, please read the unit tests locate
 ### Version 0.2.0
 
 - [x] Added the `userExists` function.
+- [x] Added the `getUserFromToken` function.
 - [ ] More detailed, improved documentation.
 - [x] Improve the way test variables are handled.
 - [x] Renamed the `src/checker.ts` module to `src/checkers.ts`.
