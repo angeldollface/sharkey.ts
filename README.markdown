@@ -6,25 +6,25 @@
 
 ## ABOUT :books:
 
-This library for Deno is there to interact with Sharkey from Typescript. I wrote this to prototype a library in another programming language and get a feel for Sharkey's API routes.
+This library for Deno is there to interact with Sharkey from Typescript. This repository contains the source code for this library.
 
 ## USAGE :hammer:
 
 ### APIs
 
-To get the documentation for this library, please visit this library's documentation pages [here](https://angeldollface.boo/sharkey.ts). Please also take care to import ***Sharkey.ts*** via an HTTP import or by adding it to your Deno project. The documentation gives inaccurate information on imports (This is not down to me, this is a known issue with Deno.).
+Documentation for this library can be found [here](https://angeldollface.boo/sharkey.ts).
 
-You can import any of ***Sharkey.ts's*** APIs by adding the following line to your Typescript file:
+You can import any of ***Sharkey.ts's*** APIs by adding the following line to your Typescript file(s):
 
 ```Typescript
 import { functionName } 'https://deno.land/x/sharkey/mod.ts';
 ```
 
-`functionName` represents any of the function signatures present in the documentation pages.
+`functionName` represents any of the function signatures present in the library.
 
 ### EXAMPLE
 
-To get a feel for how to use ***Sharkey.ts***, please read the unit tests located in [`mod_test.ts`](mod_test.ts).
+Please read the unit tests located in [`mod_test.ts`](https://github.com/angeldollface/sharkey.ts/blob/main/mod_test.ts) to get a feel for the APIs ***Sharkey.ts*** provides.
 
 ## CHANGELOG :black_nib:
 
@@ -32,15 +32,15 @@ To get a feel for how to use ***Sharkey.ts***, please read the unit tests locate
 
 - Initial release.
 - Upload to GitHub.
-- Upload to [deno.land/x](https://deno.land/x).
+- Upload to [deno.land/x/sharkey](https://deno.land/x/sharkey).
 
 ### Version 0.2.0
 
-- [x] Added the `userExists` function.
-- [x] Added the `getUserFromToken` function.
-- [x] More detailed, improved documentation.
-- [x] Improve the way test variables are handled.
-- [x] Renamed the `src/checker.ts` module to `src/checkers.ts`.
+- Added the `userExists` function.
+- Added the `getUserFromToken` function.
+- More detailed, improved documentation.
+- Improved the way test variables are handled.
+- Renamed the `src/checker.ts` module to `src/checkers.ts`.
 
 ## NOTE :scroll:
 

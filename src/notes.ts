@@ -12,6 +12,7 @@ import { fetchJSON } from './network.ts';
  * has posted. The username of the user needs
  * to be specified, the Misskey/Sharkey instance that they
  * are on, the base API route, and the URL to said instance.
+ * If the retrieval fails, an error object is returned.
  * @param {string} userName
  * @param {string} server
  * @param {string} apiBase
@@ -63,7 +64,7 @@ export async function getUserNotes(
  * be supplied, refer to this library's unit tests.
  * These can be found in the file "mod_test.ts".
  * If the operation of posting a note fails, an error
- * is returned.
+ * object is returned.
  * @param {string} apiBase
  * @param {string} baseUrl
  * @param {string} apiToken
