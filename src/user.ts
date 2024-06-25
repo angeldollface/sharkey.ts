@@ -8,7 +8,8 @@ import { fetchJSON } from './network.ts';
 
 /**
  * Returns an object containing all public information
- * about the supplied user.
+ * about the supplied user. If this object cannot be
+ * retrieved, an error object is returned.
  * @param {string} userName
  * @param {string} server
  * @param {string} baseUrl
@@ -45,6 +46,7 @@ export async function getUserInfo(
 
 /**
  * Returns an object containing all users the supplied username is following.
+ * If this object cannot be retrieved, an error object is returned.
  * @param {string} userName
  * @param {string} server
  * @param {string} baseUrl
@@ -94,6 +96,7 @@ export async function getUserFollowing(
 
 /**
  * Returns an object containing all users following a user.
+ * If this object cannot be retrieved, an error object is returned.
  * @param {string} userName
  * @param {string} server
  * @param {string} baseUrl
@@ -143,13 +146,14 @@ export async function getUserFollowers(
 
 /**
  * Returns a success object for following a user.
+ * If the operation fails, an error object is returned.
  * @param {string} userName
  * @param {string} server
  * @param {string} apiToken
  * @param {string} baseUrl
  * @param {string} apiBase
  * @param {boolean} withReplies
- * @returns {Promise<object>} Returns a success object if the action of following someone completes. If it does not complete, an error object is returned.
+ * @returns {Promise<object>} Returns a success object if following someone completes. If it does not complete, an error object is returned.
 */
 export async function followUser(
     userName: string,
@@ -196,13 +200,14 @@ export async function followUser(
 }
 
 /**
- * Returns a success object for unfollowing a user.
+ * Attempts to return a success object for unfollowing a user.
+ * If this operation fails, an error object is returned.
  * @param {string} userName
  * @param {string} server
  * @param {string} apiToken
  * @param {string} baseUrl
  * @param {string} apiBase
- * @returns {Promise<object>} Returns a success object if the action of unfollowing a user compoletes successfully. If not, an error object is returned.
+ * @returns {Promise<object>} Returns a success object for the action of unfollowing a user. If the operation fails, an error object is returned.
 */
 export async function unfollowUser(
     userName: string,
@@ -246,6 +251,15 @@ export async function unfollowUser(
     }
 }
 
+/**
+ * Attempts to return information on the user owning the provided
+ * API token as an object. If the operation fails, an error object
+ * is returned.
+ * @param {string} baseUrl
+ * @param {string} apiBase
+ * @param {string} apiToken
+ * @returns {Promise<object>} Returns an object containing information on the user profile owning the API token. If the operation fails, an error object is returned.
+*/
 export async function getUserFromToken(
 	baseUrl: string,
 	apiBase: string,
@@ -276,7 +290,7 @@ export default {
     followUser,
     getUserInfo,
     unfollowUser,
-		getUserFromToken,
+	getUserFromToken,
     getUserFollowers,
     getUserFollowing
 };

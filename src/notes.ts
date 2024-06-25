@@ -59,6 +59,11 @@ export async function getUserNotes(
 
 /**
  * Attempts to create a note containing only text.
+ * If you are unclear about parameters that need to
+ * be supplied, refer to this library's unit tests.
+ * These can be found in the file "mod_test.ts".
+ * If the operation of posting a note fails, an error
+ * is returned.
  * @param {string} apiBase
  * @param {string} baseUrl
  * @param {string} apiToken
@@ -114,7 +119,8 @@ export async function createTextNoteForUser(
 /**
  * Deletes a note for a user who owns the supplied
  * API Token with the supplied URL to the Misskey/Sharkey instance, 
- * the id of the note, and the route to the instance's API.
+ * the ID of the note, and the route to the instance's API.
+ * If the operation fails, an error is returned.
  * @param {string} apiBase
  * @param {string} baseUrl
  * @param {string} apiToken
@@ -149,7 +155,7 @@ export async function deleteNoteForUser(
 }
 
 /**
- * Attempts to like a note with the supplied id
+ * Attempts to like a note with the supplied ID
  * for a user who owns the  supplied API token on a supplied 
  * instance through the supplied basic API route.
  * @param {string} apiBase
@@ -187,7 +193,7 @@ export async function likeNoteForUser(
 }
 
 /**
- * Attempts to unlike a note with the supplied id
+ * Attempts to unlike a note with the supplied ID
  * for a user who owns the  supplied API token on a supplied 
  * instance through the supplied basic API route.
  * @param {string} apiBase

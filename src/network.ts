@@ -6,12 +6,16 @@ Licensed under the DSL v1.
 
 /**
  * Attempts to fetch a response with the given
- * paramaters.
+ * paramaters. These paramaters include the following:
+ * - method: POST or GET
+ * - headers: an instance of the "Headers" class
+ * - params: a JSON payload to submit
+ * - reqUrl: the URL to send the request to
  * @param {string} method
  * @param {Headers} headers
  * @param {object} params
  * @param {string} reqUrl
- * @returns {Promise<object>} A JSON response is returned or an error object.
+ * @returns {Promise<object>} A JSON response containing the requested data is returned or an error object.
 */
 export async function fetchJSON(
     method: string,

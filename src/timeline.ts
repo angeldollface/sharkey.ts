@@ -9,14 +9,14 @@ import { fetchJSON } from './network.ts';
 /**
  * Returns an object of all notes and activity on the local
  * Misskey/Sharkey instance taking the supplied parameters into
- * account.
+ * account. If this object cannot be retrieved, an error object is returned.
  * @param {string} baseUrl
  * @param {string} apiBase
  * @param {boolean} withFiles
  * @param {boolean} withRenotes
  * @param {boolean} withReplies
  * @param {number} noteCount
- * @returns {Promise<object>} An object of all the notes and other activity is returned or an error object.
+ * @returns {Promise<object>} An object of all the notes and other activity is returned. If failures occur, an error object is returned.
 */
 export async function instanceTimeline(
     baseUrl: string,
@@ -52,6 +52,7 @@ export async function instanceTimeline(
 /**
  * Returns an object of all the notes and other activity on all instances
  * networked with the supplied instance of Misskey/Sharkey.
+ * If the object cannot be retrieved, an error object is returned.
  * @param {string} baseUrl
  * @param {string} apiBase
  * @param {boolean} withFiles
@@ -93,6 +94,7 @@ export async function globalTimeline(
 
 /**
  * Returns an object containing all notes in which the user has been mentioned.
+ * If this operation fails, an error object is returned.
  * @param {string} apiToken
  * @param {string} baseUrl
  * @param {string} apiBase

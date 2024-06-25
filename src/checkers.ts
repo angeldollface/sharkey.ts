@@ -8,7 +8,8 @@ import { getUserInfo } from "./user.ts";
 
 /**
  * Checks whether a JSON response is a Sharkey/Misskey
- * error response or not.
+ * error response or not. A boolean is returned to
+ * reflect this status.
  * @param {object} subject
  * @returns {boolean} Returns either "true" or "false" depending on whether the response's first key is "error" or not.
 */
@@ -29,7 +30,7 @@ export function objectIsErrorResponse(
  * Returns a boolean that describes
  * whether the supplied username
  * exists on the supplied Sharkey/Misskey
- * server.
+ * server or not.
  * @param {string} userName
  * @param {string} server
  * @param {string} baseUrl

@@ -10,6 +10,7 @@ import { fetchJSON } from './network.ts';
  * Searches for a user on the given server with the given username,
  * the given baseurl, and basic API route and with the supplied number
  * of results. The number of results cannot exceed 99.
+ * If the operation fails, an error object is returned.
  * @param {string} userName
  * @param {string} server
  * @param {string} baseUrl
