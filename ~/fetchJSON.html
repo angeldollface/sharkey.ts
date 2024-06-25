@@ -198,7 +198,13 @@
       </code></label></div>
 
 <div class="mt-3"><div class="space-y-7" id="function_fetchJSON_0_div"><div class="markdown flex-1"><p>Attempts to fetch a response with the given
-paramaters.</p>
+paramaters. These paramaters include the following:</p>
+<ul>
+<li>method: POST or GET</li>
+<li>headers: an instance of the "Headers" class</li>
+<li>params: a JSON payload to submit</li>
+<li>reqUrl: the URL to send the request to</li>
+</ul>
 </div><section class="section">
   <div>
 	  <h2>Parameters</h2></div><div class="ml-2 space-y-3"><div class="anchorable docEntry" id="function_fetchJSON_0_parameters_method"><a href="#function_fetchJSON_0_parameters_method" class="anchor" aria-label="Anchor" tabIndex="-1"><svg
@@ -458,7 +464,7 @@ paramaters.</p>
   />
 </svg>
 </a>
-</div><div class="markdown_border"><div class="markdown flex-1"><p>A JSON response is returned or an error object.</p>
+</div><div class="markdown_border"><div class="markdown flex-1"><p>A JSON response containing the requested data is returned or an error object.</p>
 </div></div></div>
 </div></section>
 </div>
