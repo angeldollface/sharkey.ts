@@ -42,11 +42,6 @@ Please read the unit tests located in [`mod_test.ts`](https://github.com/angeldo
 - Improved the way test variables are handled.
 - Renamed the `src/checker.ts` module to `src/checkers.ts`.
 
-### Version 0.3.0
-
-- [ ] Add interfaces for each response type for stricter and cleaner usage.
-- [ ] Update documentation accordingly.
-
 ## NOTE :scroll:
 
 - *Sharkey.ts :shark: :sauropod:* by Alexander Abraham :black_heart: a.k.a. *"Angel Dollface" :dolls: :ribbon:*
