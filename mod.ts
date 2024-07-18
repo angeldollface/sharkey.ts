@@ -7,6 +7,9 @@ Licensed under the DSL v1.
 // Exporting everything from the "network" module.
 export { fetchJSON } from './src/network.ts';
 
+// Exporting everything from the "meta" module.
+export { onlineUsersCount } from './src/meta.ts';
+
 // Exporting everything from the "search" module.
 export { searchForUser } from './src/search.ts';
 

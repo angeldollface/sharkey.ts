@@ -42,6 +42,11 @@ Please read the unit tests located in [`mod_test.ts`](https://github.com/angeldo
 - Improved the way test variables are handled.
 - Renamed the `src/checker.ts` module to `src/checkers.ts`.
 
+### Version 0.3.0
+
+- Added the `onlineUsersCount` function.
+- Changed the `fetchJSON` function to be able to accept empty payloads to cover the `onlineUsersCount` function.
+
 ## NOTE :scroll:
 
 - *Sharkey.ts :shark: :sauropod:* by Alexander Abraham :black_heart: a.k.a. *"Angel Dollface" :dolls: :ribbon:*

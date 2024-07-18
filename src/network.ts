@@ -24,13 +24,24 @@ export async function fetchJSON(
     reqUrl: string
 ): Promise<object> {
     try{
-        const postRequest = await fetch(
-            reqUrl, {
-                method: method,
-                headers: headers,
-                body: JSON.stringify(params),
-            } 
-        );
+        let postRequest: Response;
+        if (Object.keys(params).length == 0) {
+            postRequest = await fetch(
+                reqUrl, {
+                    method: method,
+                    headers: headers,
+                } 
+            );
+        }
+        else {
+            postRequest = await fetch(
+                reqUrl, {
+                    method: method,
+                    headers: headers,
+                    body: JSON.stringify(params),
+                } 
+            );
+        }
         if (postRequest.body === null && postRequest.ok){
             return ({"action":"completed"} as object)
         }

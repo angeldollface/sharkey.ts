@@ -10,6 +10,7 @@ import * as sharkey from './mod.ts';
 
 // Importing the API to test equality.
 import { assertEquals } from "@std/assert";
+import { objectIsErrorResponse } from "./src/checkers.ts";
 
 // Basic variables that will not
 // change.
@@ -303,3 +304,18 @@ Deno.test(
 );
 
 /* "./src/checkers.ts" TESTS END */
+
+/* "./src/meta.ts" TESTS START */
+
+Deno.test(
+	"Testing the \"onlineUsersCount\" function.",
+	async () => {
+		const userCount: object = await sharkey.onlineUsersCount(
+			baseUrl,
+			apiBase
+		);
+		assertEquals(objectIsErrorResponse(userCount), (false));
+	}
+);
+
+/* "./src/meta.ts" TESTS END */
